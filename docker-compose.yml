@@ -21,9 +21,9 @@ services:
   shot-service:
     build: ./shot-service
     ports:
-      - "8081:8081"
+      - "8081:8080"
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8081/actuator/health" ]
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8080/actuator/health"]
       interval: 10s
       timeout: 5s
       retries: 3
@@ -54,7 +54,6 @@ services:
       POSTGRES_USER: sqd
       POSTGRES_PASSWORD: spud
     volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
@@ -63,3 +62,5 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+volumes:
+  postgres_data:
