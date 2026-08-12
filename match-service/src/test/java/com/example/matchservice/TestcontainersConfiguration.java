@@ -1,4 +1,4 @@
-package com.micropool.league_service;
+package com.example.matchservice;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
