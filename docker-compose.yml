@@ -15,7 +15,8 @@ services:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/actuator/health" ]
       interval: 10s
       timeout: 5s
-      retries: 3
+      retries: 5
+      start_period: 30s
 
 ###
   shot-service:
@@ -23,10 +24,11 @@ services:
     ports:
       - "8081:8081"
     healthcheck:
-      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8081/actuator/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:8081/actuator/health"]
       interval: 10s
       timeout: 5s
-      retries: 3
+      retries: 5
+      start_period: 20s
 
   ###
   league-service:
