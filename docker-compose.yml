@@ -21,9 +21,9 @@ services:
   shot-service:
     build: ./shot-service
     ports:
-      - "8081:8080"
+      - "8081:8081"
     healthcheck:
-      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8080/actuator/health"]
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8081/actuator/health"]
       interval: 10s
       timeout: 5s
       retries: 3
